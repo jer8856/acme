@@ -20,3 +20,12 @@ python -m pip install acme-jer
 ### Run Tests:
     python -m unittest -v
     
+## A collapsible section with markdown
+<details>
+  <summary>Click to expand!</summary>
+  
+```python
+def func():
+    return 'hello, world!'
+```
+</details>
