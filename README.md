@@ -54,6 +54,5 @@ For example:
 
 <details><summary>Overview Solution</summary>
 
-![UML-class](https://lucid.app/lucidchart/invitations/accept/inv_b0ec93d6-81a3-4193-9ccd-0d1eaa70df56?viewport_loc=-34%2C168%2C1927%2C867%2CdFraPBPXtqgZ)
-
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/8e88fc8f-2c73-4e94-8866-bf606327d777" id="wSraoECuh-AE"></iframe></div>
 </details>
