@@ -53,7 +53,71 @@ For example:
 
 
 <details><summary>Overview Solution</summary>
+I started setting up the environment, then I decided to use python as the programming language to develop `acme`. After that I created a simple UML class with will be continuing redefining till get the last one presented below.
     
 ![UML-class case](https://lucid.app/publicSegments/view/a4bb0aae-d9fd-4322-a407-309d9ff6e801/image.png)
-    
+
+After deciding what will be the architecture of the project. I defined the structure as the following:
+```
+acme-jer
+|____acme
+|     | __init__.py
+│     │ __main__.py
+|     | daytimeclass.py
+|     | employeeclass.py
+|     | paymentclass.py
+|     | helpers.py
+|
+|___sample
+|     |_ sample.txt
+|
+|__tests
+|     | __init__.py
+|     | test_DayTime.py
+|     | test_Employee.py
+|     | test_integ.py
+|     | test_Payment.py
+|
+|__README.md
+|__requirements.txt
+|__setup.py
+```
+   
+The next step were refine classes as well as functions and integrated funcionality. For development process schedule I use ActiveCollab and Github, the last one as required.
+
+</details>
+
+<details><summary>Install from source</summary>
+
+Clone the project:
+
+```
+git clone https://github.com/jer8856/acme-jer
+```
+
+Change to the app directory:
+
+```
+cd acme-jer
+```
+
+Run demo:
+
+```
+python3 -m acme --demo
+```
+
+Run for independent file
+
+```
+python3 -m acme <filename>
+```
+> File must be in the same directory
+
+Run test:
+
+```
+python3 -m unittest -v
+```
+
 </details>
