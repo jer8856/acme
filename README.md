@@ -23,7 +23,7 @@ python -m pip install acme-jer
 
 ## Problem Statement
 <details>
-  <summary>**Problem**</summary>
+  <summary>Problem</summary>
   
 The company ACME offers their employees the flexibility to work the hours they want. They will pay for the hours worked based on the day of the week and time of day, according to the following table:
 
@@ -53,5 +53,7 @@ For example:
 
 
 <details><summary>Overview Solution</summary>
+
+![UML-class](https://lucid.app/documents/view/8e88fc8f-2c73-4e94-8866-bf606327d777)
 
 </details>
