@@ -53,6 +53,5 @@ For example:
 
 
 <details><summary>Overview Solution</summary>
-
-<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/8e88fc8f-2c73-4e94-8866-bf606327d777" id="wSraoECuh-AE"></iframe></div>
+![UML-class case](https://lucid.app/publicSegments/view/a4bb0aae-d9fd-4322-a407-309d9ff6e801/image.png)
 </details>
