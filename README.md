@@ -53,5 +53,7 @@ For example:
 
 
 <details><summary>Overview Solution</summary>
+    
 ![UML-class case](https://lucid.app/publicSegments/view/a4bb0aae-d9fd-4322-a407-309d9ff6e801/image.png)
+    
 </details>
