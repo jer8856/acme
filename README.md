@@ -93,3 +93,4 @@ acme-jer
 ```
    
 The next step were refine classes as well as functions and integrated funcionality. For development process schedule I use ActiveCollab and Github, the last one as required.
+![ActiveCollab](./files/actcollab.png)
