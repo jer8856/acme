@@ -6,6 +6,7 @@ contains the following functions:
     * main - the main function of the script
 """
 import sys
+
 from acme import processFile, instructions
 
 

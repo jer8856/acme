@@ -4,21 +4,28 @@ This module that allows the user to calculate the total that the company has to 
 
 > **`Python 3.x`** is required.
 
-Install ACME with `pip`:
+### Clone the project:
 
 ```
-python -m pip install acme-jer
+git clone https://github.com/jer8856/acme-jer
+```
+
+Change to the app directory:
+
+```
+cd acme-jer
 ```
 ### Usage
 
-    python -m acme <filename>
+    python3 -m acme <filename>
 
 ### Demo:
-    python -m acme --demo
+    python3 -m acme --demo
 > File should be in the same directory
 
 ### Run Tests:
-    python -m unittest -v
+    python3 -m unittest -v
+    
     
 
 ## Problem Statement
@@ -56,6 +63,7 @@ For example:
 I started setting up the environment, then I decided to use python as the programming language to develop `acme`. After that I created a simple UML class with will be continuing redefining till get the last one presented below.
     
 ![UML-class case](https://lucid.app/publicSegments/view/a4bb0aae-d9fd-4322-a407-309d9ff6e801/image.png)
+This UML was created using  [lucid.app](https://lucid.app)
 
 After deciding what will be the architecture of the project. I defined the structure as the following:
 ```
@@ -81,43 +89,7 @@ acme-jer
 |__README.md
 |__requirements.txt
 |__setup.py
+|__License
 ```
    
 The next step were refine classes as well as functions and integrated funcionality. For development process schedule I use ActiveCollab and Github, the last one as required.
-
-</details>
-
-<details><summary>Install from source</summary>
-
-Clone the project:
-
-```
-git clone https://github.com/jer8856/acme-jer
-```
-
-Change to the app directory:
-
-```
-cd acme-jer
-```
-
-Run demo:
-
-```
-python3 -m acme --demo
-```
-
-Run for independent file
-
-```
-python3 -m acme <filename>
-```
-> File must be in the same directory
-
-Run test:
-
-```
-python3 -m unittest -v
-```
-
-</details>

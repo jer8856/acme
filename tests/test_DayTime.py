@@ -4,8 +4,8 @@ import unittest
 class TestDayTime(unittest.TestCase):
     __output = [1440, 1, 349]
     def setUp(self):
-        self.timeList = [DayTime("00:00"),DayTime("00:01"),
-                     DayTime("05:49")]
+        self.timeList = [DayTime.strptime("00:00"),DayTime.strptime("00:01"),
+                     DayTime.strptime("05:49")]
 
     def test_convert2minutes(self):
         for index, value in enumerate(self.timeList):

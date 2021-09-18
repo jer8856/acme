@@ -15,4 +15,4 @@ class TestEmploye(unittest.TestCase):
         self.assertEqual(salary, 480)
         salary: float = self.employee.getSalary(
             'SU05:00-11:00,MO18:00-19:00')
-        self.assertEqual(salary, 540.0)
+        self.assertEqual(round(salary,2), 539.67)

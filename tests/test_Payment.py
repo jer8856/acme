@@ -8,12 +8,13 @@ class TestPayment(unittest.TestCase):
             'output': [2,3,46,401]
             },
         'range' : {
-            'input' : [acme.DayTime("00:50"), acme.DayTime("23:50"), acme.DayTime("18:01")],
+            'input' : ["00:50", "23:50",
+                       "18:01"],
             'output': ["early", "later", "later"]
         },
         'salary' : {
-            'input' : [(acme.DayTime("00:50"), acme.DayTime("01:00")), 
-                       (acme.DayTime("10:00"), acme.DayTime("12:00"))],
+            'input' : [("00:50", "01:00"), 
+                       ("10:00", "12:00")],
             'output': {
                 'weekday' : [4.17, 30],
                 'weekend' : [5, 40]
@@ -32,13 +33,17 @@ class TestPayment(unittest.TestCase):
 
     def test_checkRange(self, _input = "input", output = "output"):
         for index, value in enumerate(self.__test["range"][_input]):
-            _range: str = acme.Payment.checkRange(value)
+            _range: str = acme.Payment.checkRange(acme.DayTime.strptime(value))
             self.assertEqual(_range, self.__test["range"][output][index])
 
     def test_getSalary(self, _input = "input", output = "output"):
         for index, (v1, v2) in enumerate(self.__test["salary"][_input]):
-            _salaryWeekday: float = self.payWeekdays.getSalary(v1, v2)
-            _salaryWeekend: float = self.payWeekend.getSalary(v1, v2)
+            v1t = acme.DayTime.strptime(v1)
+            v2t = acme.DayTime.strptime(v2)
+            # print(f'range {v1t} - {v2t}')
+            _salaryWeekday: float = self.payWeekdays.getSalary(v1t, v2t)
+            _salaryWeekend: float = self.payWeekend.getSalary(v1t, v2t)
+            # print(f'salario:  end{_salaryWeekend}, day,{_salaryWeekday}')
             self.assertEqual(_salaryWeekend, self.__test["salary"][output]['weekend'][index])
             self.assertEqual(_salaryWeekday, self.__test["salary"][output]['weekday'][index])
 

@@ -51,9 +51,9 @@ class Payment:
         }
     }
     __time = {
-        'early':  (acme.DayTime('00:01'), acme.DayTime('09:00')),
-        'middle': (acme.DayTime('09:01'), acme.DayTime('18:00')),
-        'later':  (acme.DayTime('18:01'), acme.DayTime('24:00'))
+        'early':  (acme.DayTime.strptime('00:01'), acme.DayTime.strptime('09:00')),
+        'middle': (acme.DayTime.strptime('09:01'), acme.DayTime.strptime('18:00')),
+        'later':  (acme.DayTime.strptime('18:01'), acme.DayTime.strptime('24:00'))
     }
 
     def __init__(self, key: str):
@@ -84,7 +84,7 @@ class Payment:
         return int(-1 * value // 1 * -1)
 
     @classmethod
-    def checkRange(self, start: acme.DayTime):
+    def checkRange(self, start: acme.DayTime) -> str:
         """Determines whether a DayTime is in the morning, afternoon
         or evening schedule.
 
@@ -93,6 +93,7 @@ class Payment:
         start : Daytime
             The Daytime to check
         """
+
         if self.__time['early'][0] <= start <= self.__time['early'][1]:
             return 'early'
         elif self.__time['middle'][0] <= start <= self.__time['middle'][1]:
@@ -138,15 +139,17 @@ class Payment:
 
         low = self.checkRange(start)
         upper = self.checkRange(end)
+
         if low == upper:
             return self.getIntervalPay(start, end, low)
         else:
             upperScheduleTime = self.__time[low][1]
             salary = self.getIntervalPay(start, upperScheduleTime, low)
             nextSchedule = self.__time[self.shift(low)][0]
+
             return salary + self.getSalary(nextSchedule, end, salary)
 
-    def getIntervalPay(self, start, end, unit):
+    def getIntervalPay(self, start: acme.DayTime, end: acme.DayTime, unit):
         """Calculates the total pay for the hours worked within the same
         schedule.
 
@@ -161,10 +164,9 @@ class Payment:
         unit : str
             schedule 
         """
+
         interval = end - start
         totalMinutes = interval.Converse2Minutes()
-        # print(f'diff: {interval}')
-        # print(f'star{start}, end{end},total minutes: {totalMinutes}')
         factor = self.payment[unit]/60.0
-        # print(f'factor{factor}')
-        return round(totalMinutes * factor, 2)
+        result = round(totalMinutes * factor, 2)
+        return result

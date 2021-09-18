@@ -19,7 +19,6 @@ functions:
                 (time and hours), in a list of tuples
 """
 
-import re
 import os
 import acme
 
@@ -53,7 +52,7 @@ def processFile(args):
     employeesList
         a list of Employee objects
     """
-    
+
     if args == '--demo':
         return demo()
     else:
@@ -62,7 +61,8 @@ def processFile(args):
         employeesList = getEmployees(lines)
 
     for employee in employeesList:
-        print(f'The amount to pay {employee.name} is: {round(employee.getSalary(),2)} USD')
+        print(
+            f'The amount to pay {employee.name} is: {round(employee.getSalary(),2)} USD')
 
 
 def readFile(filepath):
@@ -79,7 +79,7 @@ def readFile(filepath):
     lines
         a list that contains the lines of the file
     """
-    
+
     try:
         with open(filepath) as f_in:
             lines = list(line for line in (l.strip() for l in f_in) if line)
@@ -106,7 +106,7 @@ def getFilePath(filename):
     path
         the path of the file
     """
-    
+
     if not filename:
         return "File is empty"
     currentpath = os.path.abspath(os.getcwd())
@@ -119,7 +119,7 @@ def getEmployees(lines):
     """Gets a list with the lines of the .txt file, gets the name 
     of an employee and the schedule and creates the Employee object
     for each line and returns them in a list.
-    
+
     Parameters
     ----------
     lines : str
@@ -130,7 +130,7 @@ def getEmployees(lines):
     employees
         a list with the Employee objects created from the file
     """
-    
+
     employees = []
     for line in lines:
         name, workdays = tokenize(line)
@@ -140,9 +140,9 @@ def getEmployees(lines):
 
 
 def tokenize(string):
-    """Gets an string process it and returns the name of 
-    an employee the schedule (time and hours), in a list of tuples
-    
+    """Gets an string, process it and returns the name of 
+    an employee and a string that is the schedule
+
     Parameters
     ----------
     string : str
@@ -152,21 +152,18 @@ def tokenize(string):
     -------
     name
         a string containing the name of an employee e.g "RENE"
-    result
-        a list of tuples with the time and hours an employee worked
-            e.g. [("MO", "12", "00")]
-    
+    days
+        a string representing the days and time the employee worked
+            e.g. "MO10:00-15:52,SU10:00-10:50"
+
     Exceptions
     ------
     ValueError
         If blank string or bad format parameter.
     """
-    
-    # name = re.match(r'(?P<name>[a-zA-Z]+)', string).group('name')
+
     try:
-        name, days = splitted = string.split("=")
-        result = re.findall(
-            r'(MO|TU|WE|TH|FR|SA|SU)(?P<time>[0-9:]+)\-(?P<end>[0-9:]+)', days)
+        name, days = string.split("=")
     except ValueError:
         return None, None
-    return name, result
+    return name, days
