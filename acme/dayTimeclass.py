@@ -1,27 +1,25 @@
 class DayTime:
     """
-    A Class to represent a time (hour:minute)
-    ...
+    A Class to represent a time (hour : minute)
 
     Attributes
     ----------
     hours : int
         an int number to represent the hours 0-24
+        
     minutes : int
         an int number to represent the minutes 0-59
 
     Methods
-    -------
+    ----------
+    
     Converse2Minutes()
         converts the hours to minutes
+        
     strptime(time_string: str)
         takes a string representation of a time "HH:MM" and returns
-        a DayTime object 
+        a DayTime object
     """
-
-    __metric = {
-        'hour': 60, 'minute': 1
-    }
 
     def __init__(self, hours: int = 0, minutes: int = 0):
         """
@@ -51,14 +49,11 @@ class DayTime:
         # Setter for hours attribute
         # validates if hours is valid value if not then raise an
         # exception
-        if self._minutes == 0:
-            if hours == 24 or hours == 0:
-                self._hours = 24
-            else:
-                self._hours = hours
-        elif self._minutes >= 1 and 0 <= hours <= 23:
+        if self.minutes == 0:
+            self._hours = 24 if hours == 0 else hours
+        elif self.minutes >= 1 and 0 <= hours <= 23:
             self._hours = hours
-        elif self._minutes >= 1 and hours == 24:
+        elif self.minutes >= 1 and hours == 24:
             self._hours = 0
         else:
             raise ValueError("Invalid value for hours")
@@ -113,7 +108,7 @@ class DayTime:
             DayTime in minutes
         """
 
-        totalMinutes = self.hours * DayTime.__metric['hour'] + self.minutes
+        totalMinutes = self.hours * 60 + self.minutes
         return totalMinutes
 
     def __sub__(self, other):
@@ -122,11 +117,10 @@ class DayTime:
         l = self.Converse2Minutes() - other.Converse2Minutes()
         if self.hours == other.hours or ((self.hours - other.hours) == 1):
             return DayTime(l//60, l % 60)
+        elif self.minutes == other.minutes:
+            return DayTime(self.hours - other.hours, l % 60)
         else:
-            if self.minutes == other.minutes:
-                return DayTime(self.hours - other.hours, l % 60)
-            else:
-                return DayTime(self.hours - other.hours, (l % 60)+1)
+            return DayTime(self.hours - other.hours, (l % 60)+1)
 
     def __eq__(self, other):
         # special method to support class equality
@@ -142,8 +136,7 @@ class DayTime:
 
     def __str__(self):
         # string representation of DayTime
-        return self.__repr__()
+        return f'{self.hours:02d}:{self.minutes:02d}'
 
     def __repr__(self):
-        return f'{self._hours:02d}:{self._minutes:02d}'
-
+        return f'Daytime(hours={self.hours }, minutes={self.minutes})'

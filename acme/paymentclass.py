@@ -142,12 +142,11 @@ class Payment:
 
         if low == upper:
             return self.getIntervalPay(start, end, low)
-        else:
-            upperScheduleTime = self.__time[low][1]
-            salary = self.getIntervalPay(start, upperScheduleTime, low)
-            nextSchedule = self.__time[self.shift(low)][0]
+        upperScheduleTime = self.__time[low][1]
+        salary = self.getIntervalPay(start, upperScheduleTime, low)
+        nextSchedule = self.__time[self.shift(low)][0]
 
-            return salary + self.getSalary(nextSchedule, end, salary)
+        return salary + self.getSalary(nextSchedule, end, salary)
 
     def getIntervalPay(self, start: acme.DayTime, end: acme.DayTime, unit):
         """Calculates the total pay for the hours worked within the same
@@ -168,5 +167,4 @@ class Payment:
         interval = end - start
         totalMinutes = interval.Converse2Minutes()
         factor = self.payment[unit]/60.0
-        result = round(totalMinutes * factor, 2)
-        return result
+        return round(totalMinutes * factor, 2)

@@ -40,10 +40,10 @@ class TestPayment(unittest.TestCase):
         for index, (v1, v2) in enumerate(self.__test["salary"][_input]):
             v1t = acme.DayTime.strptime(v1)
             v2t = acme.DayTime.strptime(v2)
-            # print(f'range {v1t} - {v2t}')
+            
             _salaryWeekday: float = self.payWeekdays.getSalary(v1t, v2t)
             _salaryWeekend: float = self.payWeekend.getSalary(v1t, v2t)
-            # print(f'salario:  end{_salaryWeekend}, day,{_salaryWeekday}')
+    
             self.assertEqual(_salaryWeekend, self.__test["salary"][output]['weekend'][index])
             self.assertEqual(_salaryWeekday, self.__test["salary"][output]['weekday'][index])
 

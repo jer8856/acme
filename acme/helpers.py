@@ -55,10 +55,9 @@ def processFile(args):
 
     if args == '--demo':
         return demo()
-    else:
-        filepath = getFilePath(args)
-        lines = readFile(filepath)
-        employeesList = getEmployees(lines)
+    filepath = getFilePath(args)
+    lines = readFile(filepath)
+    employeesList = getEmployees(lines)
 
     for employee in employeesList:
         print(
@@ -82,7 +81,7 @@ def readFile(filepath):
 
     try:
         with open(filepath) as f_in:
-            lines = list(line for line in (l.strip() for l in f_in) if line)
+            lines = [line for line in (l.strip() for l in f_in) if line]
     except IOError as err:
         print(err)
         return None
@@ -111,8 +110,7 @@ def getFilePath(filename):
         return "File is empty"
     currentpath = os.path.abspath(os.getcwd())
     filename = filename.rstrip("/").lstrip("/").rstrip("\\").lstrip("\\")
-    path = os.path.join(currentpath, filename)
-    return path
+    return os.path.join(currentpath, filename)
 
 
 def getEmployees(lines):
